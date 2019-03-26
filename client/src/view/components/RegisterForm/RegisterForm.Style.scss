@@ -1,0 +1,12 @@
+.register-form {
+  background: #e9de2a;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+  }
+}
