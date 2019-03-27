@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
+// View
 import { HeaderBar } from '@View/components/HeaderBar';
 
 import './NotesPage.Style.scss';
