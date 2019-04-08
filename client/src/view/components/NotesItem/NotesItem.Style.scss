@@ -1,0 +1,32 @@
+.notes-item {
+  background: #fffdfc;
+  border: black solid 1px;
+  border-radius: 8px;
+  width: 200px;
+  height: 200px;
+  padding: 16px;
+  margin: 0 8px;
+  display: flex;
+  flex-direction: column;
+
+  .notes-item-header {
+    display: flex;
+    flex-direction: row;
+
+    .notes-item-delete {
+
+      display: flex;
+      justify-self: flex-end;
+    }
+  }
+
+
+
+  .notes-item-text {
+
+  }
+
+  .notes-item-buttons {
+
+  }
+}

@@ -1,5 +1,9 @@
+import { Bind } from "dreamstate";
 import * as React from "react";
 import { Component } from "react";
+
+//View
+import { Form, Button, Row, Container, OverlayTrigger, Tooltip } from "react-bootstrap"
 
 import './RegisterForm.Style.scss';
 
@@ -7,63 +11,86 @@ export class RegisterForm extends Component {
 
   state = {
     login: '',
-    password: ''
+    email: '',
+    password: '',
+    passwordConfirmation: ''
   };
 
-  constructor(props) {
-    super(props);
-
-    this.onLoginChange = this.onLoginChange.bind(this);
-    this.onPasswordChange = this.onPasswordChange.bind(this);
-    this.onLogin = this.onLogin.bind(this);
-  }
-
+  @Bind()
   onLoginChange(event) {
     this.setState({
       login: event.target.value
     });
   }
 
+  @Bind()
+  onEmailChange(event) {
+    this.setState({
+      email: event.target.value
+    });
+  }
+
+  @Bind()
   onPasswordChange(event) {
     this.setState({
       password: event.target.value
     });
   }
 
-  onLogin() {
+  @Bind()
+  onPasswordConfirmationChange(event) {
     this.setState({
-      login: '',
-      password: ''
-    })
+      passwordConfirmation: event.target.value
+    });
+  }
+
+  @Bind()
+  onRegister() {
+
+      const { onRegister } = this.props;
+      const { login, email, password, passwordConfirmation } = this.state;
+
+      onRegister(login, email, password, passwordConfirmation);
   }
 
   render() {
 
-    const { login, password } = this.state;
+    const { login, email, password, passwordConfirmation } = this.state;
 
     return (
-      <div className={'register-form'}>
+      <Container className={'register-form'} fluid>
 
-        <div className={'input-group'}>
-          <span>Enter your login </span>
-          <input value={login} onChange={this.onLoginChange} type={'text'} name={'Username'} />
-        </div>
+        <Row className={'input-group'}>
+          <Form.Label>Login: </Form.Label>
+          <OverlayTrigger overlay={<Tooltip placement='bottom-end'>This will be your username. Letters and numbers only, please.</Tooltip>}>
+            <Form.Control value={login} onChange={this.onLoginChange} type={'text'} placeholder="login" />
+          </OverlayTrigger>
+        </Row>
 
-        <div className={'input-group'}>
-          <span>Enter your password </span>
-          <input value={password} onChange={this.onPasswordChange} type={'password'} name={'Password'} />
-        </div>
+        <Row className={'input-group'}>
+          <Form.Label>Email address: </Form.Label>
+          <OverlayTrigger overlay={<Tooltip>Use a valid email address.</Tooltip>}>
+            <Form.Control value={email} onChange={this.onEmailChange} type={'text'} placeholder="example@example.com" />
+          </OverlayTrigger>
+        </Row>
 
-        <div className={'input-group'}>
-          <span>Repeat password </span>
-          <input value={password} onChange={this.onPasswordChange} type={'password'} name={'Password'} />
-        </div>
+        <Row className={'input-group'}>
+          <Form.Label>Password: </Form.Label>
+          <OverlayTrigger overlay={<Tooltip>Password should be longer than 4 letters!</Tooltip>}>
+            <Form.Control value={password} onChange={this.onPasswordChange} type={'password'} placeholder={'password'} />
+          </OverlayTrigger>
+        </Row>
 
-        <button onClick={this.onLogin}>
+        <Row className={'input-group'}>
+          <Form.Label>Confirm password: </Form.Label>
+          <Form.Control value={passwordConfirmation} onChange={this.onPasswordConfirmationChange} type={'password'} placeholder={'confirm password'} />
+        </Row>
+
+        <Button className={'register-button'} variant={'dark'} onClick={this.onRegister}>
           Register
-        </button>
+        </Button>
 
-      </div>
+      </Container>
     );
   }
 

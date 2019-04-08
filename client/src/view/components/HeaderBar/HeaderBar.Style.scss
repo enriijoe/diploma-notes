@@ -1,6 +1,23 @@
 .header-bar {
   background: #777777;
   width: 100%;
-  padding: 8px;
+  padding: 8px 32px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .header-bar-logo {
+    display: flex;
+    align-items: center;
+
+    > span {
+      font-size: 24px;
+      color: #e4e9e2;
+    }
+  }
+
+  .header-bar-control {
+
+  }
 }

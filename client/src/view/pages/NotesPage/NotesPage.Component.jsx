@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
 
 // View
 import { HeaderBar } from '@View/components/HeaderBar';
+import { MenuBar } from "@View/components/MenuBar";
+import {NotesPanel} from "@View/components/NotesPanel";
+
 
 import './NotesPage.Style.scss';
+
+
 
 export class NotesPage extends PureComponent {
 
@@ -16,8 +20,13 @@ export class NotesPage extends PureComponent {
 
         <HeaderBar/>
 
-        <h1>Hello. There will be your notes..</h1>
-        <p><Link to='/login'>Login</Link></p>
+        <div className={'notes-content'}>
+
+          <MenuBar/>
+
+          <NotesPanel/>
+
+        </div>
 
       </div>
     );

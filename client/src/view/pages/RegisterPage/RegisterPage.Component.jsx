@@ -1,3 +1,4 @@
+import { Bind } from "dreamstate";
 import * as React from 'react';
 import { PureComponent } from 'react';
 
@@ -9,6 +10,11 @@ import './RegisterPage.Style.scss';
 
 export class RegisterPage extends PureComponent {
 
+    @Bind()
+    onRegister(login, email, password, passwordConfirmation) {
+        console.error(login, email, password, passwordConfirmation);
+    }
+
   render() {
 
     return (
@@ -16,8 +22,8 @@ export class RegisterPage extends PureComponent {
 
         <HeaderBar/>
 
-        <div className={'root'}>
-          <RegisterForm/>
+        <div className={'register-page-root'}>
+          <RegisterForm onRegister={this.onRegister}/>
         </div>
 
       </div>

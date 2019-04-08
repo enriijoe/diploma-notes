@@ -1,3 +1,4 @@
+import { Bind } from "dreamstate";
 import * as React from 'react';
 import { PureComponent } from 'react';
 
@@ -9,6 +10,11 @@ import './LoginPage.Style.scss';
 
 export class LoginPage extends PureComponent {
 
+  @Bind()
+  onLogin(login, password) {
+    console.error(login, password);
+  }
+
   render() {
 
     return (
@@ -16,8 +22,8 @@ export class LoginPage extends PureComponent {
 
         <HeaderBar/>
 
-        <div className={'root'}>
-          <LoginForm/>
+        <div className={'login-page-root'}>
+          <LoginForm onLogin={this.onLogin}/>
         </div>
 
       </div>

@@ -1,5 +1,9 @@
+import { Bind } from "dreamstate";
 import * as React from "react";
 import { Component } from "react";
+
+//View
+import { Form, Button, Row, Container } from "react-bootstrap"
 
 import './LoginForm.Style.scss';
 
@@ -10,31 +14,27 @@ export class LoginForm extends Component {
     password: ''
   };
 
-  constructor(props) {
-    super(props);
-
-    this.onLoginChange = this.onLoginChange.bind(this);
-    this.onPasswordChange = this.onPasswordChange.bind(this);
-    this.onLogin = this.onLogin.bind(this);
-  }
-
+  @Bind()
   onLoginChange(event) {
     this.setState({
       login: event.target.value
     });
   }
 
+  @Bind()
   onPasswordChange(event) {
     this.setState({
       password: event.target.value
     });
   }
 
+  @Bind()
   onLogin() {
-    this.setState({
-      login: '',
-      password: ''
-    })
+
+    const { onLogin } = this.props;
+    const { login, password } = this.state;
+
+    onLogin(login, password);
   }
 
   render() {
@@ -42,23 +42,23 @@ export class LoginForm extends Component {
     const { login, password } = this.state;
 
     return (
-      <div className={'login-form'}>
+      <Container className={'login-form'} fluid>
 
-        <div className={'input-group'}>
-          <span>Login </span>
-          <input value={login} onChange={this.onLoginChange} type={'text'} name={'Username'} />
-        </div>
+        <Row className={'input-group'}>
+          <Form.Label>Login </Form.Label>
+          <Form.Control value={login} onChange={this.onLoginChange} type={'text'} placeholder="login" />
+        </Row>
 
-        <div className={'input-group'}>
-          <span>Password</span>
-          <input value={password} onChange={this.onPasswordChange} type={'password'} name={'Password'} />
-        </div>
+        <Row className={'input-group'}>
+          <Form.Label>Password</Form.Label>
+          <Form.Control value={password} onChange={this.onPasswordChange} type={'password'} placeholder="password" />
+        </Row>
 
-        <button onClick={this.onLogin}>
+        <Button className={'login-button'} variant={'dark'} onClick={this.onLogin}>
           Submit
-        </button>
+        </Button>
 
-      </div>
+      </Container>
     );
   }
 
