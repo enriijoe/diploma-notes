@@ -1,7 +1,7 @@
 import { createElement } from 'react';
 import { render } from 'react-dom';
 
-// View
+// View.
 import { Router } from '@View/Router';
 import "@View/assets/styles/global.scss";
 

@@ -20,7 +20,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      '@View': path.resolve(ROOT_PATH, './src/view/')
+      '@View': path.resolve(ROOT_PATH, './src/view/'),
+      '@Data': path.resolve(ROOT_PATH, './src/data/')
     }
   },
   module: {

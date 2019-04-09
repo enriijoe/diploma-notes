@@ -7,7 +7,7 @@ import { NotesCreationForm } from "@View/components/NotesCreationForm";
 import { Button } from "react-bootstrap";
 
 // Data.
-import { notesContextManager } from "../../../data/store";
+import { notesContextManager } from "@Data/store";
 
 import "./NotesCreationItem.Style.scss";
 

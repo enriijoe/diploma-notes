@@ -7,7 +7,7 @@ import { NotesItem } from "@View/components/NotesItem";
 import { NotesCreationItem } from "@View/components/NotesCreationItem";
 
 // Data.
-import { notesContextManager } from "../../../data/store";
+import { notesContextManager } from "@Data/store";
 
 import "./NotesPanel.Style.scss";
 

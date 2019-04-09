@@ -11,7 +11,7 @@ import { RegisterPage } from '@View/pages/RegisterPage';
 import { NotesPage } from '@View/pages/NotesPage';
 
 // Data.
-import { notesContextManager } from "../data/store";
+import { notesContextManager } from "@Data/store";
 
 @Provide(notesContextManager)
 export class Router extends PureComponent {
