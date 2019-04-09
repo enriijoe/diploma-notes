@@ -1,4 +1,4 @@
-import {Bind} from "dreamstate";
+import { Bind, Consume } from "dreamstate";
 import * as React from "react";
 import { PureComponent } from "react";
 
@@ -6,8 +6,12 @@ import { PureComponent } from "react";
 import { NotesCreationForm } from "@View/components/NotesCreationForm";
 import { Button } from "react-bootstrap";
 
+// Data.
+import { notesContextManager } from "../../../data/store";
+
 import "./NotesCreationItem.Style.scss";
 
+@Consume(notesContextManager)
 export class NotesCreationItem extends PureComponent {
 
   state = {
@@ -28,17 +32,17 @@ export class NotesCreationItem extends PureComponent {
     });
   }
 
-  @Bind()
-  onCreationFinished(newNoteItem) {
+    @Bind()
+    onCreationFinished(noteItem) {
 
-    const { onCreate } = this.props;
+      const { notesActions: { createNoteItem } } = this.props;
 
-    this.setState({
-      isCreating: false
-    });
+      this.setState({
+        isCreating: false
+      });
 
-    onCreate(newNoteItem);
-  }
+      createNoteItem(noteItem);
+    }
 
   renderCreationForm() {
 

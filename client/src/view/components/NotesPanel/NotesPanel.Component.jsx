@@ -1,4 +1,4 @@
-import {Bind} from "dreamstate";
+import {Consume} from "dreamstate";
 import * as React from "react";
 import { PureComponent } from "react";
 
@@ -6,34 +6,23 @@ import { PureComponent } from "react";
 import { NotesItem } from "@View/components/NotesItem";
 import { NotesCreationItem } from "@View/components/NotesCreationItem";
 
+// Data.
+import { notesContextManager } from "../../../data/store";
+
 import "./NotesPanel.Style.scss";
 
+@Consume(notesContextManager)
 export class NotesPanel extends PureComponent {
-
-  state = {
-    items: []
-  };
-
-  @Bind()
-  onCreate(newNoteItem) {
-
-    const { items } = this.state;
-
-    this.setState({
-      items: [ ...items, newNoteItem ]
-    });
-  }
 
   render () {
 
-    const { items } = this.state;
-    console.error(items);
-    const notes = items.map((item, idx) => <NotesItem title={item.title} text={item.text} key={idx}/>);
+    const { notesState: { noteItems } } = this.props;
+    const notes = noteItems.map((item, id) => <NotesItem title={item.title} text={item.text} key={id}/>);
 
     return (
       <div className={'notes-panel'}>
 
-        <NotesCreationItem onCreate={this.onCreate}/>
+        <NotesCreationItem/>
 
         { notes }
 
