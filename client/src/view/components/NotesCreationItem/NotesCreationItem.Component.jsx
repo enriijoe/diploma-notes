@@ -3,10 +3,12 @@ import * as React from "react";
 import { PureComponent } from "react";
 
  //View
+import {NotesPanel} from "@View/components/NotesPanel";
 import {NotesCreationForm} from "@View/components/NotesCreationForm";
 import { Button } from "react-bootstrap";
 
 import "./NotesCreationItem.Style.scss";
+
 
 export class NotesCreationItem extends PureComponent {
 
@@ -28,9 +30,14 @@ export class NotesCreationItem extends PureComponent {
     });
   }
 
+  @Bind()
+  onCreate({title, text}) {
+    console.error({title, text});
+  }
+
   renderCreationForm() {
     return (
-      <NotesCreationForm onCancel={this.onCreationCancelled} />
+      <NotesCreationForm onCancel={this.onCreationCancelled} onCreate={this.onCreate}/>
     );
   }
 
@@ -38,13 +45,6 @@ export class NotesCreationItem extends PureComponent {
     return (
       <Button variant={'outline-dark'} onClick={this.onCreationStarted}>+</Button>
     );
-  }
-
-  @Bind()
-  onCancel() {
-    this.setState({
-      isCreating: false
-    });
   }
 
   render () {

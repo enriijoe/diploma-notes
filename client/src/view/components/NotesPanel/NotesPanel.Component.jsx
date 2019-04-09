@@ -1,3 +1,4 @@
+import {Bind} from "dreamstate";
 import * as React from "react";
 import { PureComponent } from "react";
 
@@ -11,11 +12,18 @@ export class NotesPanel extends PureComponent {
 
   state = {
     items: [
-      { id: 1, text: 'qwe', title: 'Qwe' },
-      { id: 2, text: 'asd', title: 'Asd' },
-      { id: 3, text: 'zxc', title: 'Zxc' }
+      { text: 'a', title: 'a' },
+      { text: 'b', title: 'b' },
+      { text: 'c', title: 'c' }
     ]
   };
+
+  @Bind()
+  onCreate() {
+    return (
+      <NotesCreationItem onCreate={this.onCreate}/>
+    );
+  }
 
   render () {
 
@@ -26,7 +34,7 @@ export class NotesPanel extends PureComponent {
     return (
       <div className={'notes-panel'}>
 
-        <NotesCreationItem/>
+        <NotesCreationItem onCreate={this.onCreate}/>
         {notes}
 
       </div>

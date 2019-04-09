@@ -10,20 +10,17 @@ export class NotesItem extends PureComponent {
 
   render () {
 
+    const {title, text} = this.props;
+
     return (
 
       <div className={'notes-item'}>
 
-        <div className={'notes-item-header'}>Header
-
-          <div className={'notes-item-delete'}>
-            <Button>x</Button>
-          </div>
-
+        <div className={'notes-item-header'}>{title}
+            <Button variant={'dark'}>✕</Button>
         </div>
-        <div className={'notes-item-text'}>dfg</div>
-
-        <div className={'notes-item-buttons'}>dfg</div>
+        <div className={'notes-item-text'}>{text}</div>
+        <div className={'notes-item-buttons'}>Buttons</div>
 
       </div>
     );

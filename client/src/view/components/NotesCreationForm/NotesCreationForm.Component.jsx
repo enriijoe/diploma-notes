@@ -30,8 +30,12 @@ export class NotesCreationForm extends Component {
 
   @Bind()
   onCreate() {
+    const { onCreate } = this.props;
+    const { title, text } = this.state;
 
+    onCreate({title, text});
   }
+
 
   render() {
 
