@@ -2,7 +2,7 @@ import { Bind } from "dreamstate";
 import * as React from "react";
 import { Component } from "react";
 
-//View
+// View.
 import { Form, Button, Row, Container } from "react-bootstrap"
 
 import './NotesCreationForm.Style.scss';
@@ -30,12 +30,17 @@ export class NotesCreationForm extends Component {
 
   @Bind()
   onCreate() {
+
     const { onCreate } = this.props;
     const { title, text } = this.state;
 
-    onCreate({title, text});
-  }
+    onCreate({ id: Math.round(Math.random() * 100000), title, text });
 
+    this.setState({
+      title: '',
+      text: '',
+    });
+  }
 
   render() {
 

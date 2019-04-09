@@ -2,13 +2,11 @@ import {Bind} from "dreamstate";
 import * as React from "react";
 import { PureComponent } from "react";
 
- //View
-import {NotesPanel} from "@View/components/NotesPanel";
-import {NotesCreationForm} from "@View/components/NotesCreationForm";
+// View.
+import { NotesCreationForm } from "@View/components/NotesCreationForm";
 import { Button } from "react-bootstrap";
 
 import "./NotesCreationItem.Style.scss";
-
 
 export class NotesCreationItem extends PureComponent {
 
@@ -31,17 +29,26 @@ export class NotesCreationItem extends PureComponent {
   }
 
   @Bind()
-  onCreate({title, text}) {
-    console.error({title, text});
+  onCreationFinished(newNoteItem) {
+
+    const { onCreate } = this.props;
+
+    this.setState({
+      isCreating: false
+    });
+
+    onCreate(newNoteItem);
   }
 
   renderCreationForm() {
+
     return (
-      <NotesCreationForm onCancel={this.onCreationCancelled} onCreate={this.onCreate}/>
+      <NotesCreationForm onCancel={this.onCreationCancelled} onCreate={this.onCreationFinished}/>
     );
   }
 
   renderToggleItem() {
+
     return (
       <Button variant={'outline-dark'} onClick={this.onCreationStarted}>+</Button>
     );
