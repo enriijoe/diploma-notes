@@ -16,8 +16,8 @@ export class NotesPanel extends PureComponent {
 
   render () {
 
-    const { notesState: { noteItems } } = this.props;
-    const notes = noteItems.map((item, id) => <NotesItem title={item.title} text={item.text} key={id}/>);
+    const { notesState: { noteItems }, notesActions: { removeNoteItemById } } = this.props;
+    const notes = noteItems.map((item, id) => <NotesItem title={item.title} text={item.text} key={id} onRemove={() => removeNoteItemById(item.id)}/>);
 
     return (
       <div className={'notes-panel'}>

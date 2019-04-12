@@ -10,7 +10,7 @@ export class MenuBar extends PureComponent {
 
         <div className={'menu-bar'}>
 
-            f
+            MenuBar
 
         </div>
     );

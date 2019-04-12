@@ -8,7 +8,8 @@ export class NotesContextManager extends ContextManager {
 
   context = {
     notesActions: {
-      createNoteItem: this.createNoteItem
+      createNoteItem: this.createNoteItem,
+      removeNoteItemById: this.removeNoteItemById
     },
     notesState: {
       noteItems: []
@@ -25,6 +26,18 @@ export class NotesContextManager extends ContextManager {
     this.setState({
       noteItems: [ ...noteItems, noteItem ]
     });
+
+  }
+
+  @Bind()
+  removeNoteItemById(id) {
+
+    const { noteItems } = this.context.notesState;
+
+    this.setState({
+      noteItems: noteItems.filter(noteItem => noteItem.id !== id)
+    });
+
   }
 
 }
