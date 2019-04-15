@@ -1,4 +1,4 @@
-import { Provide } from "dreamstate";
+import { Provide } from 'dreamstate';
 import * as React from 'react';
 import { PureComponent } from 'react';
 import { Route, Router as ReactRouter, Switch } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { NotesPage } from '@View/pages/NotesPage';
 import { PrivateRoute } from '@View/utils/PrivateRoute';
 
 // Data.
-import { notesContextManager, authContextManager, routerContextManager } from "@Data/store";
+import { notesContextManager, authContextManager, routerContextManager } from '@Data/store';
 
 @Provide(notesContextManager, authContextManager, routerContextManager)
 export class Router extends PureComponent {

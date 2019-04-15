@@ -1,8 +1,8 @@
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager } from 'dreamstate';
 import * as React from 'react';
 
 // Data.
-import { routerContextManager } from "@Data/store";
+import { routerContextManager } from '@Data/store';
 
 // Context store creation.
 export class AuthContextManager extends ContextManager {

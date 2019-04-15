@@ -1,9 +1,9 @@
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import { parse } from 'querystring';
 
 // View.
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager } from 'dreamstate';
 
 // Context store creation.
 export class RouterContextManager extends ContextManager {

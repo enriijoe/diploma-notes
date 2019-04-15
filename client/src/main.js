@@ -3,9 +3,9 @@ import { render } from 'react-dom';
 
 // View.
 import { Router } from '@View/Router';
-import "@View/assets/styles/global.scss";
+import '@View/assets/styles/global.scss';
 
 render(
   createElement(Router),
-  document.getElementById( 'application-root')
+  document.getElementById('application-root')
 );

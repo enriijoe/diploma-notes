@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Component } from 'react';
+import { PureComponent } from 'react';
 
 // View
 import { HeaderBar } from '@View/components/HeaderBar';
 
 import './HomePage.Style.scss';
 
-export class HomePage extends Component {
+export class HomePage extends PureComponent {
 
   render() {
 
@@ -17,7 +17,6 @@ export class HomePage extends Component {
 
       </div>
     );
-
   }
 
 }
