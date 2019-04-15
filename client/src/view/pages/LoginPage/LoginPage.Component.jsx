@@ -1,18 +1,25 @@
-import { Bind } from "dreamstate";
+import {Bind, Consume} from "dreamstate";
 import * as React from 'react';
 import { PureComponent } from 'react';
 
-// View
+// View.
 import { HeaderBar } from '@View/components/HeaderBar';
 import { LoginForm } from "@View/components/LoginForm";
 
+// Data.
+import { authContextManager } from "@Data/store";
+
 import './LoginPage.Style.scss';
 
+@Consume(authContextManager)
 export class LoginPage extends PureComponent {
 
   @Bind()
-  onLogin(login, password) {
-    console.error(login, password);
+  onLogin(username, password) {
+
+    const { authActions: { login } } = this.props;
+
+    login(username, password)
   }
 
   render() {

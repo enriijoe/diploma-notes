@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-// View
+// View.
 import { Bind, ContextManager } from "dreamstate";
 
 // Context store creation.
