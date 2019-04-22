@@ -27,6 +27,11 @@
         {
           "loose": true
         }
+      ],
+      ["@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
       ]
     ]
   },
@@ -34,6 +39,7 @@
   "repository": "none",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.3",
     "bootstrap": "^4.3.1",
     "dreamstate": "^1.0.4",
     "firebase": "^5.9.4",

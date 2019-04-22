@@ -13,29 +13,38 @@ export class DatabaseService {
     messagingSenderId: '261901029166'
   };
 
-  connect() {
+  static instance = null;
+
+  static getInstance() {
+
+    if (DatabaseService.instance === null) {
+      DatabaseService.instance = new DatabaseService();
+      DatabaseService.instance.initialize();
+    }
+
+    return DatabaseService.instance;
+  }
+
+  initialize() {
     firebase.initializeApp(DatabaseService.CONFIG);
     this.database = firebase.database();
   }
 
-  disconnect() {
-    // todo
-  }
-
   create(path, item) {
-    // todo
+    return this.database.ref(path).set(item);
   }
 
-  read(path) {
-    // todo
+  async readOnce(path) {
+    const result = await this.database.ref(path).once('value');
+    return result.val();
   }
 
   update(path, item) {
-    // todo
+    return this.database.ref(path).set(item);
   }
 
-  save(path, item) {
-    // todo
+  remove(path) {
+    return this.database.ref(path).remove();
   }
 
 }

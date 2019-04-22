@@ -1,6 +1,9 @@
 // View.
 import { Bind, ContextManager } from 'dreamstate';
 
+// Data
+import { NotesService } from '@Data/services';
+
 // Utils.
 import { Logger } from '@Data/utils';
 
@@ -19,6 +22,7 @@ export class NotesContextManager extends ContextManager {
 
   setState = ContextManager.getSetter(this, 'notesState');
 
+  notesService = new NotesService();
   log = new Logger('[NOTES]');
 
   @Bind()
