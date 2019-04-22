@@ -1,14 +1,14 @@
-import { Bind, Consume } from "dreamstate";
-import * as React from "react";
-import { PureComponent } from "react";
+import { Bind, Consume } from 'dreamstate';
+import * as React from 'react';
+import { PureComponent } from 'react';
 
-//View
-import { Button } from "react-bootstrap";
+// View
+import { Button } from 'react-bootstrap';
 
 // Data.
-import { authContextManager, routerContextManager } from "@Data/store";
+import { authContextManager, routerContextManager } from '@Data/store';
 
-import "./HeaderBar.Style.scss";
+import './HeaderBar.Style.scss';
 
 @Consume(authContextManager, routerContextManager)
 export class HeaderBar extends PureComponent {
@@ -43,9 +43,11 @@ export class HeaderBar extends PureComponent {
 
     return (
       <>
-        <Button variant={'outline-light'}>
-          { user.username }
-        </Button>
+        <div className={'header-bar-username'}>
+          <span>
+            { user.username }
+          </span>
+        </div>
 
         <Button variant={'outline-light'} onClick={logout}>
           Logout

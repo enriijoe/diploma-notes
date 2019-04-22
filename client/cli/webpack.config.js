@@ -30,15 +30,15 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        },
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader"
+          'style-loader',
+          'css-loader',
+          'sass-loader'
         ]
       }
     ]
@@ -54,7 +54,7 @@ module.exports = {
     compress: true,
     port: 3000,
     historyApiFallback: true,
-    host: "localhost",
+    host: 'localhost',
     inline: true,
     publicPath: '/'
   }

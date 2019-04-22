@@ -1,9 +1,9 @@
-import * as React from 'react';
-
 // View.
-import { Bind, ContextManager } from "dreamstate";
+import { Bind, ContextManager } from 'dreamstate';
 
-// Context store creation.
+// Utils.
+import { Logger } from '@Data/utils';
+
 export class NotesContextManager extends ContextManager {
 
   context = {
@@ -12,11 +12,14 @@ export class NotesContextManager extends ContextManager {
       removeNoteItemById: this.removeNoteItemById
     },
     notesState: {
-      noteItems: []
+      noteItems: [],
+      connected: false
     }
   };
 
   setState = ContextManager.getSetter(this, 'notesState');
+
+  log = new Logger('[NOTES]');
 
   @Bind()
   createNoteItem(noteItem) {
@@ -38,6 +41,16 @@ export class NotesContextManager extends ContextManager {
       noteItems: noteItems.filter(noteItem => noteItem.id !== id)
     });
 
+  }
+
+  @Bind()
+  connectToDatabase() {
+    this.log.info('Connected');
+  }
+
+  @Bind()
+  disconnectFromDatabase() {
+    this.log.info('Disconnected');
   }
 
 }

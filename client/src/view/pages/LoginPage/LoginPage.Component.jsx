@@ -1,10 +1,10 @@
-import {Bind, Consume} from "dreamstate";
+import { Bind, Consume } from 'dreamstate';
 import * as React from 'react';
 import { PureComponent } from 'react';
 
 // View.
 import { HeaderBar } from '@View/components/HeaderBar';
-import { LoginForm } from "@View/components/LoginForm";
+import { LoginForm } from '@View/components/LoginForm';
 
 // Data.
 import { authContextManager } from "@Data/store";

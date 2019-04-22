@@ -1,5 +1,6 @@
 .header-bar {
   background: #777777;
+  border-bottom: gainsboro solid 1px;
   width: 100%;
   padding: 8px 32px;
   box-sizing: border-box;
@@ -19,6 +20,19 @@
   }
 
   .header-bar-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    .header-bar-username{
+      margin-left: 8px;
+
+      > span {
+        font-size: 24px;
+        color: #e4e9e2;
+      }
+    }
 
   }
 }

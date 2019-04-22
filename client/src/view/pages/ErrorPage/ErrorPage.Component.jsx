@@ -1,9 +1,9 @@
-import * as React from "react";
-import {PureComponent} from "react";
-import { Link } from "react-router-dom";
+import * as React from 'react';
+import { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 // View
-import { HeaderBar } from "@View/components/HeaderBar";
+import { HeaderBar } from '@View/components/HeaderBar';
 
 export class ErrorPage extends PureComponent {
 
