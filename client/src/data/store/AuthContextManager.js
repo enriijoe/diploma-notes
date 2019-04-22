@@ -3,6 +3,7 @@ import * as React from 'react';
 
 // Data.
 import { routerContextManager } from '@Data/store';
+import { AuthService } from '@Data/services';
 
 // Context store creation.
 export class AuthContextManager extends ContextManager {
@@ -21,27 +22,34 @@ export class AuthContextManager extends ContextManager {
 
   setState = ContextManager.getSetter(this, 'authState');
 
+  authService = new AuthService();
+
+  constructor() {
+    super();
+
+    this.context.authState.isAuthorised = Boolean(localStorage.getItem('uid'));
+    this.authService.listenAuthStatus(this.onAuthStatusChanged);
+  }
+
   @Bind()
-  login(username, password) {
-
-    if (username === 'admin' && password === 'admin') {
-      this.setState({
-        isAuthorised: true,
-        user: { username }
-      });
-
-      routerContextManager.replace('/notes');
-    } else {
-      console.error('Authorisation failed :( Wrong credentials: ', username, password);
-    }
+  async login(email, password) {
+    await this.authService.login(email, password);
+    routerContextManager.replace('/notes');
   }
 
   @Bind()
   logout() {
+    this.authService.logout();
+  }
+
+  @Bind()
+  onAuthStatusChanged(user) {
+
+    localStorage.setItem('uid', user ? user.uid : null);
 
     this.setState({
-      isAuthorised: false,
-      user: null
+      isAuthorised: user !== null,
+      user
     });
   }
 

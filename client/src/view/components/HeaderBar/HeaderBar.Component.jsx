@@ -45,7 +45,7 @@ export class HeaderBar extends PureComponent {
       <>
         <div className={'header-bar-username'}>
           <span>
-            { user.username }
+            { user ? user.email : '...' }
           </span>
         </div>
 

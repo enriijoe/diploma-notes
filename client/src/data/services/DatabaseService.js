@@ -28,6 +28,7 @@ export class DatabaseService {
   initialize() {
     firebase.initializeApp(DatabaseService.CONFIG);
     this.database = firebase.database();
+    this.auth = firebase.auth();
   }
 
   create(path, item) {
