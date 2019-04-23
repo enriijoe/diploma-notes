@@ -24,6 +24,10 @@ export class AuthService {
     return this.databaseService.auth.signOut();
   }
 
+  register(email, password) {
+    return this.databaseService.auth.createUserWithEmailAndPassword(email, password);
+  }
+
   listenAuthStatus(listener) {
     return this.databaseService.auth.onAuthStateChanged(listener);
   }

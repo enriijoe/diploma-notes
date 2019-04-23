@@ -7,7 +7,7 @@ import { HeaderBar } from '@View/components/HeaderBar';
 import { LoginForm } from '@View/components/LoginForm';
 
 // Data.
-import { authContextManager } from "@Data/store";
+import { authContextManager } from '@Data/store';
 
 import './LoginPage.Style.scss';
 
@@ -15,11 +15,11 @@ import './LoginPage.Style.scss';
 export class LoginPage extends PureComponent {
 
   @Bind()
-  onLogin(username, password) {
+  onLogin(email, password) {
 
     const { authActions: { login } } = this.props;
 
-    login(username, password)
+    login(email, password)
   }
 
   render() {

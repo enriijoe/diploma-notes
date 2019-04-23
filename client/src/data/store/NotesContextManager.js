@@ -34,6 +34,8 @@ export class NotesContextManager extends ContextManager {
       noteItems: [ ...noteItems, noteItem ]
     });
 
+    this.notesService.save(noteItem);
+
   }
 
   @Bind()
@@ -44,6 +46,8 @@ export class NotesContextManager extends ContextManager {
     this.setState({
       noteItems: noteItems.filter(noteItem => noteItem.id !== id)
     });
+
+    this.notesService.removeById(id);
 
   }
 

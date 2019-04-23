@@ -1,10 +1,10 @@
-import * as React from "react";
-import { PureComponent } from "react";
+import * as React from 'react';
+import { PureComponent } from 'react';
 
 // View.
-import { Button } from "react-bootstrap"
+import { Button } from 'react-bootstrap'
 
-import "./NotesItem.Style.scss";
+import './NotesItem.Style.scss';
 
 export class NotesItem extends PureComponent {
 

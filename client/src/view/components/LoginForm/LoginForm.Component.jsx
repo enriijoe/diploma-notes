@@ -1,24 +1,23 @@
-import { Bind } from "dreamstate";
-import * as React from "react";
-import { Component } from "react";
+import { Bind } from 'dreamstate';
+import * as React from 'react';
+import { Component } from 'react';
 
-//View
-import { Form, Button, Row, Container } from "react-bootstrap"
+// View.
+import { Form, Button, Row, Container } from 'react-bootstrap'
 
 import './LoginForm.Style.scss';
-
 
 export class LoginForm extends Component {
 
   state = {
-    login: '',
+    email: '',
     password: ''
   };
 
   @Bind()
   onLoginChange(event) {
     this.setState({
-      login: event.target.value
+      email: event.target.value
     });
   }
 
@@ -33,21 +32,21 @@ export class LoginForm extends Component {
   onLogin() {
 
     const { onLogin } = this.props;
-    const { login, password } = this.state;
+    const { email, password } = this.state;
 
-    onLogin(login, password);
+    onLogin(email, password);
   }
 
   render() {
 
-    const { login, password } = this.state;
+    const { email, password } = this.state;
 
     return (
       <Container className={'login-form'} fluid>
 
         <Row className={'input-group'}>
-          <Form.Label>Login </Form.Label>
-          <Form.Control value={login} onChange={this.onLoginChange} type={'text'} placeholder="login" />
+          <Form.Label>Email </Form.Label>
+          <Form.Control value={email} onChange={this.onLoginChange} type={'text'} placeholder="email" />
         </Row>
 
         <Row className={'input-group'}>

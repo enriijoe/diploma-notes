@@ -1,19 +1,27 @@
-import { Bind } from "dreamstate";
+import { Bind, Consume } from 'dreamstate';
 import * as React from 'react';
 import { PureComponent } from 'react';
 
 // View
 import { HeaderBar } from '@View/components/HeaderBar';
-import { RegisterForm } from "@View/components/RegisterForm";
+import { RegisterForm } from '@View/components/RegisterForm';
+
+// Data.
+import { authContextManager } from '@Data/store';
 
 import './RegisterPage.Style.scss';
 
+@Consume(authContextManager)
 export class RegisterPage extends PureComponent {
 
-    @Bind()
-    onRegister(login, email, password, passwordConfirmation) {
-        console.error(login, email, password, passwordConfirmation);
-    }
+  @Bind()
+  onRegister(email, password, passwordConfirmation) {
+    console.error(email, password, passwordConfirmation);
+
+    const { authActions: { register } } = this.props;
+
+    register(email, password)
+  }
 
   render() {
 

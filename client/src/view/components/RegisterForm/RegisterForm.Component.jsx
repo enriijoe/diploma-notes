@@ -1,27 +1,19 @@
-import { Bind } from "dreamstate";
-import * as React from "react";
-import { Component } from "react";
+import { Bind } from 'dreamstate';
+import * as React from 'react';
+import { Component } from 'react';
 
-//View
-import { Form, Button, Row, Container, OverlayTrigger, Tooltip } from "react-bootstrap"
+// View.
+import { Form, Button, Row, Container, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 import './RegisterForm.Style.scss';
 
 export class RegisterForm extends Component {
 
   state = {
-    login: '',
     email: '',
     password: '',
     passwordConfirmation: ''
   };
-
-  @Bind()
-  onLoginChange(event) {
-    this.setState({
-      login: event.target.value
-    });
-  }
 
   @Bind()
   onEmailChange(event) {
@@ -47,30 +39,23 @@ export class RegisterForm extends Component {
   @Bind()
   onRegister() {
 
-      const { onRegister } = this.props;
-      const { login, email, password, passwordConfirmation } = this.state;
+    const { onRegister } = this.props;
+    const { email, password, passwordConfirmation } = this.state;
 
-      onRegister(login, email, password, passwordConfirmation);
+    onRegister(email, password, passwordConfirmation);
   }
 
   render() {
 
-    const { login, email, password, passwordConfirmation } = this.state;
+    const { email, password, passwordConfirmation } = this.state;
 
     return (
       <Container className={'register-form'} fluid>
 
         <Row className={'input-group'}>
-          <Form.Label>Login: </Form.Label>
-          <OverlayTrigger overlay={<Tooltip placement='bottom-end'>This will be your username. Letters and numbers only, please.</Tooltip>}>
-            <Form.Control value={login} onChange={this.onLoginChange} type={'text'} placeholder="login" />
-          </OverlayTrigger>
-        </Row>
-
-        <Row className={'input-group'}>
           <Form.Label>Email address: </Form.Label>
-          <OverlayTrigger overlay={<Tooltip>Use a valid email address.</Tooltip>}>
-            <Form.Control value={email} onChange={this.onEmailChange} type={'text'} placeholder="example@example.com" />
+          <OverlayTrigger overlay={<Tooltip placement='right'>Use a valid email address.</Tooltip>}>
+            <Form.Control value={email} onChange={this.onEmailChange} type={'text'} placeholder="example@example.example" />
           </OverlayTrigger>
         </Row>
 

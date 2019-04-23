@@ -11,7 +11,8 @@ export class AuthContextManager extends ContextManager {
   context = {
     authActions: {
       login: this.login,
-      logout: this.logout
+      logout: this.logout,
+      register: this.register
     },
     authState: {
       isAuthorised: false,
@@ -40,6 +41,12 @@ export class AuthContextManager extends ContextManager {
   @Bind()
   logout() {
     this.authService.logout();
+  }
+
+  @Bind()
+  async register(email, password) {
+    await this.authService.register(email, password);
+    routerContextManager.replace('/notes');
   }
 
   @Bind()
