@@ -15,7 +15,7 @@ export class LoginForm extends Component {
   };
 
   @Bind()
-  onLoginChange(event) {
+  onEmailChange(event) {
     this.setState({
       email: event.target.value
     });
@@ -46,7 +46,7 @@ export class LoginForm extends Component {
 
         <Row className={'input-group'}>
           <Form.Label>Email </Form.Label>
-          <Form.Control value={email} onChange={this.onLoginChange} type={'text'} placeholder="email" />
+          <Form.Control value={email} onChange={this.onEmailChange} type={'text'} placeholder="email" />
         </Row>
 
         <Row className={'input-group'}>

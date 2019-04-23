@@ -35,7 +35,6 @@ export class NotesContextManager extends ContextManager {
     });
 
     this.notesService.save(noteItem);
-
   }
 
   @Bind()
@@ -48,7 +47,6 @@ export class NotesContextManager extends ContextManager {
     });
 
     this.notesService.removeById(id);
-
   }
 
   @Bind()
