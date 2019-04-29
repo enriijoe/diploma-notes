@@ -4,10 +4,6 @@ export class AuthService {
 
   databaseService = DatabaseService.getInstance();
 
-  constructor() {
-    window.temp = this;
-  }
-
   isLoggedIn() {
     return this.databaseService.auth.currentUser !== null;
   }

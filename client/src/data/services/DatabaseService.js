@@ -48,4 +48,8 @@ export class DatabaseService {
     return this.database.ref(path).remove();
   }
 
+  subscribe(path, listener) {
+    return this.database.ref(path).on('value', listener);
+  }
+
 }

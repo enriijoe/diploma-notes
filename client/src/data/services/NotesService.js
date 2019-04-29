@@ -5,24 +5,28 @@ export class NotesService {
   basePath = '/notes';
   databaseService = DatabaseService.getInstance();
 
-  getById(id) {
-    return this.databaseService.readOnce(`${this.basePath}/${id}`);
+  getById(userId, id) {
+    return this.databaseService.readOnce(`${this.basePath}/${userId}/${id}`);
   }
 
-  getAll() {
-    return this.databaseService.readOnce(this.basePath);
+  getAll(userId) {
+    return this.databaseService.readOnce(`${this.basePath}/${userId}`);
   }
 
-  updateById(id, item) {
-    return this.databaseService.update(`${this.basePath}/${id}`, item);
+  updateById(userId, id, item) {
+    return this.databaseService.update(`${this.basePath}/${userId}/${id}`, item);
   }
 
-  removeById(id) {
-    return this.databaseService.remove(`${this.basePath}/${id}`);
+  removeById(userId, id) {
+    return this.databaseService.remove(`${this.basePath}/${userId}/${id}`);
   }
 
-  save(item) {
-    return this.databaseService.create(`${this.basePath}/${item.id}`, item);
+  save(userId, item) {
+    return this.databaseService.create(`${this.basePath}/${userId}/${item.id}`, item);
+  }
+
+  subscribeToNotes(userId, listener) {
+    return this.databaseService.subscribe(`${this.basePath}/${userId}`, listener);
   }
 
 }

@@ -20,7 +20,7 @@ export class RegisterPage extends PureComponent {
 
     const { authActions: { register } } = this.props;
 
-    register(email, password)
+    register(email, password);
   }
 
   render() {
