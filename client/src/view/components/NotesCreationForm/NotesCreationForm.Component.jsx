@@ -1,9 +1,9 @@
-import { Bind } from "dreamstate";
-import * as React from "react";
-import { Component } from "react";
+import { Bind } from 'dreamstate';
+import * as React from 'react';
+import { Component } from 'react';
 
 // View.
-import { Form, Button, Row, Container } from "react-bootstrap"
+import { Form, Button, Row, Container } from 'react-bootstrap'
 
 import './NotesCreationForm.Style.scss';
 
@@ -11,7 +11,7 @@ export class NotesCreationForm extends Component {
 
   state = {
     title: '',
-    text: '',
+    text: ''
   };
 
   @Bind()
@@ -38,7 +38,7 @@ export class NotesCreationForm extends Component {
 
     this.setState({
       title: '',
-      text: '',
+      text: ''
     });
   }
 
@@ -48,19 +48,13 @@ export class NotesCreationForm extends Component {
     const { onCancel } = this.props;
 
     return (
-      <Container className={'notes-creating-form'} fluid>
+      <div className={'notes-creating-form'}>
 
-        <Row className={'input-group'}>
-          <Form.Label>Title</Form.Label>
-          <Form.Control value={title} onChange={this.onTitleChange} placeholder="Title" />
-        </Row>
+        <input value={title} onChange={this.onTitleChange} placeholder={'Title'} />
 
-        <Row className={'input-group'}>
-          <Form.Label>Text</Form.Label>
-          <Form.Control value={text} onChange={this.onTextChange} placeholder="Your note" />
-        </Row>
+        <textarea value={text} onChange={this.onTextChange} placeholder={'Your note...'} />
 
-        <Row className={'button-group'}>
+        <div className={'button-group'}>
           <Button className={'cancel-note-button'} variant={'dark'} onClick={onCancel}>
             Cancel
           </Button>
@@ -68,9 +62,9 @@ export class NotesCreationForm extends Component {
           <Button className={'create-note-button'} variant={'dark'} onClick={this.onCreate}>
             Create
           </Button>
-        </Row>
+        </div>
 
-      </Container>
+      </div>
     );
   }
 

@@ -2,30 +2,33 @@
   background: white;
   border-radius: 8px;
   width: 100%;
+  height: 100%;
   padding: 0 16px;
   display: flex;
   flex-direction: column;
 
-  .input-group {
-    margin: 12px 0;
-    display: flex;
-    flex-direction: column;
+  > input {
+    width: 100%;
+    border: white;
+    padding: 8px;
+    margin: 16px 0 16px 0;
+  }
 
-    .form-label {
-      margin-bottom: 4px;
-    }
-
-    > input {
-      width: 100%;
-    }
+  > textarea {
+    width: 100%;
+    border: white;
+    padding: 8px;
+    margin: 0 0 16px 0;
+    resize: vertical;
+    min-height: 64px;
   }
 
   .button-group {
     width: 100%;
-    margin: 12px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-shrink: 0;
 
     .create-note-button {
     }

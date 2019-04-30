@@ -1,12 +1,22 @@
 .header-bar {
-  background: #777777;
+  background: white;
   border-bottom: gainsboro solid 1px;
+  box-shadow: gainsboro 0 0 8px 1px;
+  z-index: 100;
   width: 100%;
-  padding: 8px 32px;
+  padding: 16px 32px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  .login-button, .register-button, .logout-button {
+    font-size: 16px;
+    color: #5e5e66;
+    margin-right: 8px;
+    background-color: white;
+    border-color: white;
+  }
 
   .header-bar-logo {
     display: flex;
@@ -14,8 +24,9 @@
     cursor: pointer;
 
     > span {
-      font-size: 24px;
-      color: #e4e9e2;
+      font-size: 28px;
+      font-weight: lighter;
+      color: #5e5e66;
     }
   }
 
@@ -25,12 +36,14 @@
     align-items: center;
     cursor: pointer;
 
-    .header-bar-username{
-      margin-left: 8px;
+    .header-bar-username {
+      margin-left: 32px;
+      margin-right: 16px;
+      cursor: default;
 
       > span {
-        font-size: 24px;
-        color: #e4e9e2;
+        font-size: 16px;
+        color: #5e5e66;
       }
     }
 

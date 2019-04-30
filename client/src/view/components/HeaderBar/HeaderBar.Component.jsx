@@ -43,13 +43,18 @@ export class HeaderBar extends PureComponent {
 
     return (
       <>
+
+        <div role={'button'} className={'header-bar-settings'}>
+          SET
+        </div>
+
         <div className={'header-bar-username'}>
           <span>
             { user ? user.email : '...' }
           </span>
         </div>
 
-        <Button variant={'outline-light'} onClick={logout}>
+        <Button className={'logout-button'} variant={'light'} onClick={logout}>
           Logout
         </Button>
       </>
@@ -60,18 +65,18 @@ export class HeaderBar extends PureComponent {
 
     return (
       <>
-        <Button variant={'outline-light'} onClick={this.onLoginNavigate}>
+        <Button className={'login-button'} variant={'light'} onClick={this.onLoginNavigate}>
           Login
         </Button>
 
-        <Button variant={'outline-light'} onClick={this.onRegisterNavigate}>
+        <Button className={'register-button'} variant={'light'} onClick={this.onRegisterNavigate}>
           Register
         </Button>
       </>
     );
   }
 
-  render () {
+  render() {
 
     const { authState: { isAuthorised } } = this.props;
 

@@ -25,7 +25,9 @@ export class NotesPanel extends PureComponent {
 
         <NotesCreationItem/>
 
-        { notes }
+        <div className={'notes-items-panel'}>
+          { notes }
+        </div>
 
       </div>
     );
