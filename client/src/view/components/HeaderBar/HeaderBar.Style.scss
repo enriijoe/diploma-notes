@@ -1,7 +1,7 @@
 .header-bar {
-  background: white;
-  border-bottom: gainsboro solid 1px;
-  box-shadow: gainsboro 0 0 8px 1px;
+  background-color: #161616;
+  border-bottom: #161616 solid 1px;
+  box-shadow: #161616 0 0 8px 1px;
   z-index: 100;
   width: 100%;
   padding: 16px 32px;
@@ -26,7 +26,7 @@
     > span {
       font-size: 28px;
       font-weight: lighter;
-      color: #5e5e66;
+      color: #a6aaa5;
     }
   }
 
@@ -34,16 +34,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
 
     .header-bar-username {
       margin-left: 32px;
       margin-right: 16px;
-      cursor: default;
 
       > span {
         font-size: 16px;
-        color: #5e5e66;
+        color: #a6aaa5;
       }
     }
 

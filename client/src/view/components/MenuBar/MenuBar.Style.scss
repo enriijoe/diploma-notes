@@ -6,10 +6,21 @@
   flex-direction: column;
   justify-self: flex-start;
   justify-content: flex-start;
-  border-right: 1px solid #dcdcdc;
+  //border-right: 1px solid gainsboro;
 
   > button {
     align-self: flex-start;
+    width: 56px;
+    height: 56px;
+    border: white solid 1px;
+    border-radius: 32px;
     margin-bottom: 16px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    transition-duration: 500ms;
+  }
+
+  .rendered-menu-bar {
+    width: 200px;
   }
 }

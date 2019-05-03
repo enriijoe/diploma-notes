@@ -27,11 +27,15 @@ export class MenuBar extends PureComponent {
 
     return (
       <>
-        <div> MENUBAR </div>
-        <div> MENUBAR </div>
-        <div> MENUBAR </div>
-        <div> MENUBAR </div>
-        <div> MENUBAR </div>
+        <div className={'rendered-menu-bar'}>
+          <div> Main notes</div>
+          <div>
+            <span>Bookmarks</span>
+            <div> MENUBAR </div>
+            <div> MENUBAR </div>
+            <div> MENUBAR </div>
+          </div>
+        </div>
       </>
     );
   }
@@ -43,8 +47,8 @@ export class MenuBar extends PureComponent {
     return (
       <div className={'menu-bar'}>
 
-        <Button variant={'dark'} onClick={this.onToggleMenu}>
-          { show ? '<' : '>' }
+        <Button variant={'outline-dark'} onClick={this.onToggleMenu}>
+          { show ? '▲' : '▼' }
         </Button>
 
         { show ? this.renderMenu() : null }

@@ -8,8 +8,8 @@
   width: 100%;
   padding: 16px;
   margin: 12px 0;
-  box-shadow: 1px 1px 6px 1px #aaa;
-  border: 1px solid #aaa;
+  //box-shadow: 1px 1px 6px 1px #aaa;
+  border: 0.5px solid gainsboro;
   transition-duration: 1s;
   overflow: hidden;
 
@@ -17,14 +17,14 @@
     overflow-wrap: break-word;
     width: 100%;
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin-bottom: 8px;
   }
 
   .notes-item-text {
     overflow-wrap: break-word;
     width: 100%;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .notes-item-buttons {
@@ -43,9 +43,9 @@
     right: 0;
     top: 0;
     padding: 4px;
-    background: rgba(60, 60, 60, 0.5);
-    border-left: 1px rgba(60, 60, 60, 0.5) solid;
-    border-bottom: 1px rgba(60, 60, 60, 0.5) solid;
+    //background: rgba(60, 60, 60, 0.5);
+    //border-left: 1px rgba(60, 60, 60, 0.5) solid;
+    //border-bottom: 1px rgba(60, 60, 60, 0.5) solid;
     cursor: pointer;
     font-weight: 500;
   }
@@ -53,6 +53,6 @@
 }
 
 .notes-item:hover {
-  filter: brightness(85%);
+  filter: brightness(80%);
   box-shadow: 1px 1px 6px 1px #888;
 }
