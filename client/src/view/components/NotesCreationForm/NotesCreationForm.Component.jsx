@@ -3,66 +3,134 @@ import * as React from 'react';
 import { Component } from 'react';
 
 // View.
-import { Form, Button, Row, Container } from 'react-bootstrap'
+import { Button, Popover } from 'react-bootstrap'
+import { GithubPicker } from 'react-color';
+
+// Utils.
+import { uuid } from '@Data/utils/helpers';
 
 import './NotesCreationForm.Style.scss';
 
 export class NotesCreationForm extends Component {
 
   state = {
+    isSelectingColor: false,
+    color: '#fff',
     title: '',
     text: ''
   };
 
   @Bind()
   onTitleChange(event) {
-    this.setState({
-      title: event.target.value
-    });
+    this.setState({ title: event.target.textContent });
   }
 
   @Bind()
   onTextChange(event) {
-    this.setState({
-      text: event.target.value
-    });
+    this.setState({ text: event.target.textContent });
+  }
+
+  @Bind()
+  onColorSelect(color) {
+    this.setState({ color: color.hex });
+  }
+
+  @Bind()
+  onToggleColorSelect() {
+
+    const { isSelectingColor } = this.state;
+
+    this.setState({ isSelectingColor: !isSelectingColor });
   }
 
   @Bind()
   onCreate() {
 
     const { onCreate } = this.props;
-    const { title, text } = this.state;
+    const { color, title, text } = this.state;
 
-    onCreate({ id: Math.round(Math.random() * 100000), title, text });
+    onCreate({ id: uuid(), title, text, color, createdAt: Date.now() });
 
     this.setState({
       title: '',
-      text: ''
+      text: '',
+      color: '#fff'
     });
   }
 
-  render() {
-
-    const { title, text } = this.state;
-    const { onCancel } = this.props;
+  renderEdits() {
 
     return (
-      <div className={'notes-creating-form'}>
+      <>
 
-        <input value={title} onChange={this.onTitleChange} placeholder={'Title'} />
+        <div
+          className={'notes-heading'}
+          contentEditable={'true'}
+          data-text={'Title...'}
+          onInput={this.onTitleChange}
+        />
 
-        <textarea value={text} onChange={this.onTextChange} placeholder={'Your note...'} />
+        <div
+          className={'notes-text'}
+          contentEditable={'true'}
+          data-text={'Note...'}
+          onInput={this.onTextChange}
+        />
 
-        <div className={'button-group'}>
+      </>
+    );
+  }
+
+  renderToolbar() {
+
+    const { onCancel } = this.props;
+    const { text, title, color, isSelectingColor } = this.state;
+
+    const bgStyle = { backgroundColor: color };
+
+    return (
+      <div className={'notes-toolbar'}>
+
+        <div onClick={this.onToggleColorSelect}>
+
+          <div className={'color-picker'} style={bgStyle}/>
+
+          {
+            isSelectingColor
+              ?
+              <Popover placement={'right'}>
+                <GithubPicker triangle={'hide'} onChangeComplete={this.onColorSelect}/>
+              </Popover>
+
+              : null
+          }
+
+        </div>
+
+        <div className={'toolbar-buttons'}>
+
           <Button className={'cancel-note-button'} variant={'dark'} onClick={onCancel}>
             Cancel
           </Button>
 
-          <Button className={'create-note-button'} variant={'dark'} onClick={this.onCreate}>
+          <Button className={'create-note-button'} disabled={!text && !title} variant={'dark'} onClick={this.onCreate}>
             Create
           </Button>
+
         </div>
+
+      </div>
+    );
+  }
+
+  render() {
+
+    return (
+      <div className={'notes-creating-form'}>
+
+        { this.renderEdits() }
+
+        { this.renderToolbar() }
 
       </div>
     );

@@ -24,11 +24,11 @@ export class Router extends PureComponent {
 
         <Switch>
 
-          <Route exact path={['/', '/home']} component={HomePage}/>
+          <PrivateRoute reversed exact path={['/', '/home']} redirect={'/notes'} component={HomePage}/>
 
-          <PrivateRoute reversed exact path={'/login'} redirect={'/home'} component={LoginPage}/>
+          <PrivateRoute reversed exact path={'/login'} redirect={'/notes'} component={LoginPage}/>
 
-          <PrivateRoute reversed exact path={'/register'} component={RegisterPage}/>
+          <PrivateRoute reversed exact path={'/register'} redirect={'/notes'} component={RegisterPage}/>
 
           <PrivateRoute exact path={'/notes'} component={NotesPage}/>
 

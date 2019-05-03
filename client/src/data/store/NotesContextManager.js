@@ -28,6 +28,8 @@ export class NotesContextManager extends ContextManager {
   notesService = new NotesService();
   log = new Logger('[NOTES]');
 
+  disconnectCallback = null;
+
   @Bind()
   createNoteItem(noteItem) {
 
@@ -49,28 +51,50 @@ export class NotesContextManager extends ContextManager {
 
     const { user } = authContextManager.context.authState;
 
-    this.notesService.subscribeToNotes((user && user.uid) || localStorage.getItem('uid'), this.onNotesChanged);
-    this.log.info('Connected');
+    this.disconnectCallback = this.notesService.subscribeToNotes((user && user.uid) || localStorage.getItem('uid'), this.onNotesChanged);
+
+    this.log.info('Connecting...');
   }
 
   @Bind()
   disconnectFromDatabase() {
-    this.log.info('Disconnected');
+
+    if (this.disconnectCallback) {
+      this.disconnectCallback();
+    }
+
+    this.setState({ connected: false });
+
+    this.log.info('Disconnected...');
   }
 
   @Bind()
   onNotesChanged(snapshot) {
 
-    const value = snapshot.val();
-    const items = [];
+    if (snapshot) {
 
-    for (const it in value) {
-      items.push(value[it]);
+      const value = snapshot.val();
+      const items = [];
+
+      for (const it in value) {
+        items.push(value[it]);
+      }
+
+      items.sort((first, second) => second.createdAt - first.createdAt);
+
+      this.setState({
+        connected: true,
+        noteItems: items
+      });
+
+    } else {
+
+      this.setState({
+        connected: false,
+        noteItems: []
+      })
     }
 
-    this.setState({
-      noteItems: items
-    });
   }
 
 }

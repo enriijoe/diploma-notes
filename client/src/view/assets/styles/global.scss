@@ -3,4 +3,12 @@
 html, body, #application-root {
   height: 100%;
   width: 100%;
+
+  min-width: 900px;
+  min-height: 506px;
+}
+
+// Div textarea placeholders.
+[contentEditable=true]:empty:not(:focus):before{
+  content:attr(data-text)
 }

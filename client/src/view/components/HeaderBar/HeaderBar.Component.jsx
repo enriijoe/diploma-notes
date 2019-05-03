@@ -4,6 +4,7 @@ import { PureComponent } from 'react';
 
 // View
 import { Button } from 'react-bootstrap';
+import { Loader } from '@View/components/Loader';
 
 // Data.
 import { authContextManager, routerContextManager } from '@Data/store';
@@ -32,31 +33,30 @@ export class HeaderBar extends PureComponent {
   @Bind()
   onHomeNavigate() {
 
-    const { routingActions: { push } } = this.props;
+    const { routingActions: { push }, authState: { isAuthorised } } = this.props;
 
-    push('/home');
+    if (!isAuthorised) {
+      push('/home');
+    }
   }
 
   renderAuthorisedHeader() {
 
-    const { authActions: { logout }, authState: { user } } = this.props;
+    const { authActions: { logout }, authState: { user, isAuthorising } } = this.props;
 
     return (
       <>
 
-        <div role={'button'} className={'header-bar-settings'}>
-          SET
-        </div>
-
         <div className={'header-bar-username'}>
           <span>
-            { user ? user.email : '...' }
+            { isAuthorising || !user ? <Loader width={16} height={16}/> : user.email }
           </span>
         </div>
 
         <Button className={'logout-button'} variant={'light'} onClick={logout}>
           Logout
         </Button>
+
       </>
     );
   }

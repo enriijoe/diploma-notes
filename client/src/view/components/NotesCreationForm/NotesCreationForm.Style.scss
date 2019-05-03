@@ -3,37 +3,59 @@
   border-radius: 8px;
   width: 100%;
   height: 100%;
-  padding: 0 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
 
-  > input {
+  .notes-heading, .notes-text {
     width: 100%;
     border: white;
     padding: 8px;
-    margin: 16px 0 16px 0;
+    margin-bottom: 8px;
+    max-width: 350px;
   }
 
-  > textarea {
-    width: 100%;
-    border: white;
-    padding: 8px;
-    margin: 0 0 16px 0;
-    resize: vertical;
-    min-height: 64px;
+  .notes-heading {
+    font-size: 1.6rem;
   }
 
-  .button-group {
+  .notes-text {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+
+  .notes-toolbar {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-shrink: 0;
+    align-items: center;
+    position: relative;
 
-    .create-note-button {
+    .color-picker {
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      min-height: 16px;
+      min-width: 16px;
+      border: solid 2px #000;
+      cursor: pointer;
     }
 
-    .cancel-note-button {
+    .popover {
+      top: 4px;
+      left: 8px;
+    }
+
+    .toolbar-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      flex-grow: 1;
+
+      > button {
+        margin: 0 4px;
+      }
     }
   }
 

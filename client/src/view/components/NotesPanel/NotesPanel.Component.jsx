@@ -14,11 +14,15 @@ import './NotesPanel.Style.scss';
 @Consume(notesContextManager)
 export class NotesPanel extends PureComponent {
 
-  render () {
+  render() {
 
     const { notesState: { noteItems }, notesActions: { removeNoteItemById } } = this.props;
-    const notes = noteItems.map((item, id) => <NotesItem title={item.title} text={item.text} key={id}
-      onRemove={() => removeNoteItemById(item.id)}/>);
+
+    const columns = [ [], [], [] ];
+
+    noteItems.forEach((item, id) => {
+      columns[id % 3].push(<NotesItem key={id} title={item.title} text={item.text} color={item.color} onRemove={() => removeNoteItemById(item.id)}/>);
+    });
 
     return (
       <div className={'notes-panel'}>
@@ -26,7 +30,7 @@ export class NotesPanel extends PureComponent {
         <NotesCreationItem/>
 
         <div className={'notes-items-panel'}>
-          { notes }
+          { columns.map((arr, idx) => <div key={`arr-${idx}`} className={'notes-items-panel-column'}> { arr } </div>) }
         </div>
 
       </div>

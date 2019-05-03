@@ -9,6 +9,7 @@ import { notesContextManager } from '@Data/store';
 import { HeaderBar } from '@View/components/HeaderBar';
 import { MenuBar } from '@View/components/MenuBar';
 import { NotesPanel } from '@View/components/NotesPanel';
+import { Loader } from '@View/components/Loader';
 
 import './NotesPage.Style.scss';
 
@@ -22,7 +23,29 @@ export class NotesPage extends PureComponent {
     connectToDatabase();
   }
 
+  componentWillUnmount() {
+
+    const { notesActions: { disconnectFromDatabase } } = this.props;
+
+    disconnectFromDatabase();
+  }
+
+  renderContent() {
+
+    return (
+      <>
+
+        <MenuBar/>
+
+        <NotesPanel/>
+
+      </>
+    );
+  }
+
   render() {
+
+    const { notesState: { connected } } = this.props;
 
     return (
       <div className={'notes-page'}>
@@ -30,11 +53,7 @@ export class NotesPage extends PureComponent {
         <HeaderBar/>
 
         <div className={'notes-content'}>
-
-          <MenuBar/>
-
-          <NotesPanel/>
-
+          { connected ? this.renderContent() : <Loader/> }
         </div>
 
       </div>

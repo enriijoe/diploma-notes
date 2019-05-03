@@ -2,14 +2,18 @@
   background: white;
   border: gainsboro solid 1px;
   border-radius: 8px;
-  width: 80%;
-  min-height: 32px;
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-shrink: 0;
+  min-width: 360px;
+  min-height: 56px;
+  font-size: 1.7rem;
 
   > button {
+    width: 100%;
     border: white solid 1px;
     border-radius: 8px;
+    transition-duration: 500ms;
   }
 }

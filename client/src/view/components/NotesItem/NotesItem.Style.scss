@@ -1,59 +1,30 @@
 .notes-item {
-  background: white;
-  border-radius: 8px;
-  width: 200px;
-  min-height: 160px;
-  padding: 16px;
-  margin: 0 16px 16px 0;
-  box-shadow: gainsboro 2px 1px 6px 1px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: space-between;
-  justify-content: space-between;
 
-  .notes-item:nth-child(3n) {
-    min-height: 160px;
-  }
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  padding: 16px;
+  margin: 12px 0;
+  box-shadow: 1px 1px 6px 1px #aaa;
+  border: 1px solid #aaa;
+  transition-duration: 1s;
+  overflow: hidden;
 
-  .notes-item:nth-child(4n) {
-    min-height: 160px;
-  }
-
-  .notes-item-header {
-    display: flex;
-    flex-direction: row;
-    justify-self: flex-start;
-    align-self: flex-start;
-
-    .notes-item-title {
-      overflow-wrap: break-word;
-      width: 160px;
-      min-height: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-content: flex-start;
-    }
-
-    > Button {
-      border-radius: 8px;
-      display: flex;
-      justify-self: flex-start;
-      align-self: flex-start;
-    }
-
+  .notes-item-title {
+    overflow-wrap: break-word;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
   }
 
   .notes-item-text {
     overflow-wrap: break-word;
-    border-top: gainsboro solid 1px;
     width: 100%;
-    min-height: 24px;
-    padding: 16px 0;
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
+    font-size: 1.3rem;
   }
 
   .notes-item-buttons {
@@ -66,4 +37,22 @@
     justify-content: space-between;
     align-content: center;
   }
+
+  .notes-item-removal-pin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 4px;
+    background: rgba(60, 60, 60, 0.5);
+    border-left: 1px rgba(60, 60, 60, 0.5) solid;
+    border-bottom: 1px rgba(60, 60, 60, 0.5) solid;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+}
+
+.notes-item:hover {
+  filter: brightness(85%);
+  box-shadow: 1px 1px 6px 1px #888;
 }

@@ -35,6 +35,10 @@ export class DatabaseService {
     return this.database.ref(path).set(item);
   }
 
+  push(path, item) {
+    return this.database.ref(path).push(item);
+  }
+
   async readOnce(path) {
     const result = await this.database.ref(path).once('value');
     return result.val();

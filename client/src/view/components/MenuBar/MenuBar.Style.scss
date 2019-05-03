@@ -1,10 +1,15 @@
 .menu-bar {
   background: white;
-  width: 300px;
   height: 100%;
-  padding: 16px 32px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   justify-self: flex-start;
   justify-content: flex-start;
+  border-right: 1px solid #dcdcdc;
+
+  > button {
+    align-self: flex-start;
+    margin-bottom: 16px;
+  }
 }

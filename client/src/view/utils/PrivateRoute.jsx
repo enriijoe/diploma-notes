@@ -18,7 +18,7 @@ export class PrivateRoute extends Route {
       authState: { isAuthorised, isAuthorising }
     } = this.props;
 
-    if (isAuthorising === false && (reversed ? isAuthorised : !isAuthorised)) {
+    if (isAuthorising === false && (reversed ? !isAuthorised : isAuthorised)) {
       replace(this.DEFAULT_REDIRECT + '?next=' + history.location.pathname);
     }
   }
