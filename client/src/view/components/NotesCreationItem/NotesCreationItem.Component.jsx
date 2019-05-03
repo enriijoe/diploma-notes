@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PureComponent } from 'react';
 
 // View.
-import { NotesCreationForm } from '@View/components/NotesCreationForm';
+import { NotesForm } from '@View/components/NotesForm';
 import { Button } from 'react-bootstrap';
 
 // Data.
@@ -47,7 +47,7 @@ export class NotesCreationItem extends PureComponent {
   renderCreationForm() {
 
     return (
-      <NotesCreationForm onCancel={this.onCreationCancelled} onCreate={this.onCreationFinished}/>
+      <NotesForm onCancel={this.onCreationCancelled} onConfirm={this.onCreationFinished}/>
     );
   }
 

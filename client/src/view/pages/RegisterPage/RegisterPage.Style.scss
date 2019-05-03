@@ -10,6 +10,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition-duration: 700ms;
+   }
+
+   .fade-in-appear {
+      background: #161616;
+      opacity: 0;
    }
 }
 

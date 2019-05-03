@@ -1,17 +1,18 @@
 import { Bind } from 'dreamstate';
 import * as React from 'react';
+import { findDOMNode } from 'react-dom';
 import { Component } from 'react';
 
 // View.
-import { Button, Popover } from 'react-bootstrap'
+import { Button, Popover } from 'react-bootstrap';
 import { GithubPicker } from 'react-color';
 
 // Utils.
 import { uuid } from '@Data/utils/helpers';
 
-import './NotesCreationForm.Style.scss';
+import './NotesForm.Style.scss';
 
-export class NotesCreationForm extends Component {
+export class NotesForm extends Component {
 
   state = {
     isSelectingColor: false,
@@ -19,6 +20,31 @@ export class NotesCreationForm extends Component {
     title: '',
     text: ''
   };
+
+  constructor(props) {
+    super(props);
+
+    const { item } = props;
+
+    if (item) {
+      this.state.color = item.color;
+      this.state.title = item.title;
+      this.state.text = item.text;
+    }
+  }
+
+  componentDidMount() {
+
+    const { item } = this.props;
+
+    if (item) {
+
+      const node = findDOMNode(this);
+
+      node.querySelector('.notes-heading').textContent = item.title;
+      node.querySelector('.notes-text').textContent = item.text;
+    }
+  }
 
   @Bind()
   onTitleChange(event) {
@@ -44,21 +70,19 @@ export class NotesCreationForm extends Component {
   }
 
   @Bind()
-  onCreate() {
+  onConfirm() {
 
-    const { onCreate } = this.props;
+    const { onConfirm, item } = this.props;
     const { color, title, text } = this.state;
 
-    onCreate({ id: uuid(), title, text, color, createdAt: Date.now() });
+    onConfirm({ id: item ? item.id : uuid(), title, text, color, createdAt: item ? item.createdAt : Date.now() });
 
-    this.setState({
-      title: '',
-      text: '',
-      color: '#fff'
-    });
+    this.setState({ title: '', text: '', color: '#fff' });
   }
 
   renderEdits() {
+
+    const { title } = this.props;
 
     return (
       <>
@@ -68,7 +92,9 @@ export class NotesCreationForm extends Component {
           contentEditable={'true'}
           data-text={'Title...'}
           onInput={this.onTitleChange}
-        />
+        >
+          { title }
+        </div>
 
         <div
           className={'notes-text'}
@@ -83,7 +109,7 @@ export class NotesCreationForm extends Component {
 
   renderToolbar() {
 
-    const { onCancel } = this.props;
+    const { onCancel, item } = this.props;
     const { text, title, color, isSelectingColor } = this.state;
 
     const bgStyle = { backgroundColor: color };
@@ -101,7 +127,6 @@ export class NotesCreationForm extends Component {
               <Popover placement={'right'}>
                 <GithubPicker triangle={'hide'} onChangeComplete={this.onColorSelect}/>
               </Popover>
-
               : null
           }
 
@@ -113,8 +138,8 @@ export class NotesCreationForm extends Component {
             Cancel
           </Button>
 
-          <Button className={'create-note-button'} disabled={!text && !title} variant={'dark'} onClick={this.onCreate}>
-            Create
+          <Button className={'create-note-button'} disabled={!text && !title} variant={'dark'} onClick={this.onConfirm}>
+            { item ? 'Update' : 'Create'}
           </Button>
 
         </div>

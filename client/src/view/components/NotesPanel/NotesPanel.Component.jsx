@@ -16,13 +16,18 @@ export class NotesPanel extends PureComponent {
 
   render() {
 
-    const { notesState: { noteItems }, notesActions: { removeNoteItemById } } = this.props;
+    const { notesState: { noteItems }, notesActions } = this.props;
 
     const columns = [ [], [], [] ];
 
-    noteItems.forEach((item, id) => {
-      columns[id % 3].push(<NotesItem key={id} title={item.title} text={item.text} color={item.color} onRemove={() => removeNoteItemById(item.id)}/>);
-    });
+    noteItems.forEach((item, id) => columns[id % 3].push(
+      <NotesItem
+        key={id}
+        item={item}
+        onUpdate={(item) => notesActions.updateNoteItemById(item.id, item)}
+        onRemove={() => notesActions.removeNoteItemById(item.id)}
+      />)
+    );
 
     return (
       <div className={'notes-panel'}>

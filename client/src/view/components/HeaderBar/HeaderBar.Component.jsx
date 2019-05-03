@@ -63,15 +63,29 @@ export class HeaderBar extends PureComponent {
 
   renderUnauthorisedHeader() {
 
+    const { routingActions } = this.props;
+
+    const location = routingActions.getCurrentLocation();
+
     return (
       <>
-        <Button className={'login-button'} variant={'light'} onClick={this.onLoginNavigate}>
-          Login
-        </Button>
+        {
+          location === '/login'
+            ? null
+            :
+              <Button className={'login-button'} variant={'light'} onClick={this.onLoginNavigate}>
+                Login
+              </Button>
+        }
 
-        <Button className={'register-button'} variant={'light'} onClick={this.onRegisterNavigate}>
-          Register
-        </Button>
+        {
+          location === '/register'
+            ? null
+            :
+              <Button className={'register-button'} variant={'light'} onClick={this.onRegisterNavigate}>
+                Register
+              </Button>
+        }
       </>
     );
   }

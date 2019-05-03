@@ -15,7 +15,8 @@ export class NotesContextManager extends ContextManager {
       createNoteItem: this.createNoteItem,
       removeNoteItemById: this.removeNoteItemById,
       connectToDatabase: this.connectToDatabase,
-      disconnectFromDatabase: this.disconnectFromDatabase
+      disconnectFromDatabase: this.disconnectFromDatabase,
+      updateNoteItemById: this.updateNoteItemById
     },
     notesState: {
       noteItems: [],
@@ -31,11 +32,11 @@ export class NotesContextManager extends ContextManager {
   disconnectCallback = null;
 
   @Bind()
-  createNoteItem(noteItem) {
+  createNoteItem(item) {
 
     const { user } = authContextManager.context.authState;
 
-    this.notesService.save(user.uid, noteItem);
+    this.notesService.save(user.uid, item);
   }
 
   @Bind()
@@ -44,6 +45,14 @@ export class NotesContextManager extends ContextManager {
     const { user } = authContextManager.context.authState;
 
     this.notesService.removeById(user.uid, id);
+  }
+
+  @Bind()
+  updateNoteItemById(id, item) {
+
+    const { user } = authContextManager.context.authState;
+
+    this.notesService.updateById(user.uid, id, item);
   }
 
   @Bind()

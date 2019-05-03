@@ -1,6 +1,7 @@
 import { Bind, Consume } from 'dreamstate';
 import * as React from 'react';
 import { PureComponent } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
 // View
 import { HeaderBar } from '@View/components/HeaderBar';
@@ -30,9 +31,13 @@ export class RegisterPage extends PureComponent {
 
         <HeaderBar/>
 
-        <div className={'register-page-root'}>
-          <RegisterForm onRegister={this.onRegister}/>
-        </div>
+        <CSSTransition in={true} appear={true} timeout={250} classNames={'fade-in'}>
+
+          <div className={'register-page-root'}>
+            <RegisterForm onRegister={this.onRegister}/>
+          </div>
+
+        </CSSTransition>
 
       </div>
     );
