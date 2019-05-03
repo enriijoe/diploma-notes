@@ -37,7 +37,6 @@ export class NotesItem extends Component {
     onUpdate(item);
   }
 
-
   @Bind()
   onHoverItem() {
     this.setState({ isHovered: true });

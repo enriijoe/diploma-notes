@@ -7,6 +7,9 @@ import { notesContextManager, routerContextManager } from '@Data/store';
 
 // View.
 import { Button } from 'react-bootstrap';
+import  { default as MenuIcon } from '@View/assets/icons/menu.svg'
+import  { default as LightBulbIcon } from '@View/assets/icons/light-bulb.svg'
+import { default as BookmarkIcon } from '@View/assets/icons/bookmark.svg';
 import { default as DeleteIcon } from '@View/assets/icons/delete.svg';
 
 import './MenuBar.Style.scss';
@@ -71,14 +74,16 @@ export class MenuBar extends PureComponent {
             tags.length
               ? <ul>
                 <li className={'tags-panel-tag'} onClick={() => this.onNavigateToTag('')}>
-                  <div> default </div>
+                  <LightBulbIcon width={30} height={30}/>
+                  <div className={'tags-panel-tag-name'}> default </div>
                 </li>
                 {
                   tags.map((it, idx) => (
                     <li key={idx + it} className={'tags-panel-tag'}>
-                      <div onClick={() => this.onNavigateToTag(it)}> { it } </div>
+                      <BookmarkIcon width={24} height={24}/>
+                      <div className={'tags-panel-tag-name'} onClick={() => this.onNavigateToTag(it)}> { it } </div>
                       <DeleteIcon onClick={() => notesActions.removeTag(it)} width={12} height={12}/>
-                     </li>
+                    </li>
                   ))
                 }
                 </ul>
@@ -97,8 +102,8 @@ export class MenuBar extends PureComponent {
     return (
       <div className={'menu-bar'}>
 
-        <Button variant={'outline-dark'} onClick={this.onToggleMenu}>
-          { show ? '▲' : '▼' }
+        <Button variant={'light'} onClick={this.onToggleMenu}>
+          { show ? <MenuIcon width={24} height={24}/> : <MenuIcon width={24} height={24}/>}
         </Button>
 
         { show ? this.renderMenu() : null }

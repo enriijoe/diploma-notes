@@ -37,19 +37,24 @@
     align-items: center;
     position: relative;
 
-    .color-picker {
-      border-radius: 50%;
-      width: 16px;
-      height: 16px;
-      min-height: 16px;
-      min-width: 16px;
-      border: solid 2px #000;
-      cursor: pointer;
-    }
+    .toolbar-color-picker {
+      padding-left: 8px;
 
-    .popover {
-      top: 4px;
-      left: 8px;
+      .color-picker {
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        min-height: 24px;
+        min-width: 24px;
+        border: solid 2px #000;
+        cursor: pointer;
+      }
+
+      .popover {
+        top: 6px;
+        left: 18px;
+      }
+
     }
 
     .toolbar-buttons {

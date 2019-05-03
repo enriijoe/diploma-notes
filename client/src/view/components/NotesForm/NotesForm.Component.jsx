@@ -139,7 +139,7 @@ export class NotesForm extends Component {
     return (
       <div className={'notes-toolbar'}>
 
-        <div onClick={this.onToggleColorSelect}>
+        <div className={'toolbar-color-picker'} onClick={this.onToggleColorSelect}>
 
           <div className={'color-picker'} style={bgStyle}/>
 

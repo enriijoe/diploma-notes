@@ -5,6 +5,7 @@ import { PureComponent } from 'react';
 // View.
 import { NotesForm } from '@View/components/NotesForm';
 import { Button } from 'react-bootstrap';
+import { default as AddIcon } from '@View/assets/icons/add.svg';
 
 // Data.
 import { notesContextManager } from '@Data/store';
@@ -56,7 +57,7 @@ export class NotesCreationItem extends PureComponent {
   renderToggleItem() {
 
     return (
-      <Button variant={'outline-dark'} onClick={this.onCreationStarted}>+</Button>
+      <Button variant={'light'} onClick={this.onCreationStarted}> <AddIcon width={20} height={20}/> </Button>
     );
   }
 
