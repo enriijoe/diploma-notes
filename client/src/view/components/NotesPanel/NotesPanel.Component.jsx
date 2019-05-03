@@ -1,22 +1,35 @@
 import { Consume } from 'dreamstate';
 import * as React from 'react';
-import { PureComponent } from 'react';
+import { Fragment, PureComponent } from 'react';
 
 // View.
 import { NotesItem } from '@View/components/NotesItem';
 import { NotesCreationItem } from '@View/components/NotesCreationItem';
 
 // Data.
-import { notesContextManager } from '@Data/store';
+import { notesContextManager, routerContextManager } from '@Data/store';
 
 import './NotesPanel.Style.scss';
 
 @Consume(notesContextManager)
 export class NotesPanel extends PureComponent {
 
-  render() {
+  componentWillReceiveProps(nextProps) {
 
-    const { notesState: { noteItems }, notesActions } = this.props;
+    const { notesState: { connected, tags }, tag } = nextProps;
+
+    if (tag && connected && !tags.includes(tag)) {
+      routerContextManager.push('/notes');
+    }
+  }
+
+  renderPanel(tag, noteItems) {
+
+    const { notesActions } = this.props;
+
+    if (noteItems.length === 0) {
+      return null;
+    }
 
     const columns = [ [], [], [] ];
 
@@ -30,13 +43,44 @@ export class NotesPanel extends PureComponent {
     );
 
     return (
-      <div className={'notes-panel'}>
+      <Fragment key={tag}>
 
-        <NotesCreationItem/>
+        <div className={'notes-items-panel-heading '}>
+          { tag }
+        </div>
 
         <div className={'notes-items-panel'}>
           { columns.map((arr, idx) => <div key={`arr-${idx}`} className={'notes-items-panel-column'}> { arr } </div>) }
         </div>
+
+      </Fragment>
+    )
+  }
+
+  render() {
+
+    const { notesState: { noteItems, tags }, tag } = this.props;
+
+    let content = null;
+
+    if (tag) {
+
+      content = this.renderPanel(tag, noteItems.filter((it) => it.tags && it.tags.includes(tag)));
+
+    } else {
+
+      const defaultPanel = this.renderPanel('default', noteItems.filter((it) => !it.tags || it.tags.includes('default')));
+      const panels = tags.map((tag) => this.renderPanel(tag, noteItems.filter((it) => it.tags && it.tags.includes(tag))));
+
+      content = <> { defaultPanel } { panels }</>
+    }
+
+    return (
+      <div className={'notes-panel'}>
+
+        <NotesCreationItem tag={tag}/>
+
+        { content }
 
       </div>
     );

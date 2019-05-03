@@ -4,8 +4,8 @@ import { Component } from 'react';
 
 // View.
 import { Modal } from 'react-bootstrap';
-import DeleteIcon from '@View/assets/icons/delete.svg';
-import PencilIcon from '@View/assets/icons/pencil.svg';
+import { default as DeleteIcon } from '@View/assets/icons/delete.svg';
+import { default as PencilIcon } from '@View/assets/icons/pencil.svg';
 import { NotesForm } from '@View/components/NotesForm';
 
 import './NotesItem.Style.scss';

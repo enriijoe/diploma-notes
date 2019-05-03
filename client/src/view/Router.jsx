@@ -32,6 +32,8 @@ export class Router extends PureComponent {
 
           <PrivateRoute exact path={'/notes'} component={NotesPage}/>
 
+          <PrivateRoute exact path={'/notes/:tag'} component={NotesPage}/>
+
           <Route exact path={'*'} component={ErrorPage}/>
 
         </Switch>

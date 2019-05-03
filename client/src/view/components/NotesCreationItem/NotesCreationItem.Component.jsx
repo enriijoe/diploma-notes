@@ -46,8 +46,10 @@ export class NotesCreationItem extends PureComponent {
 
   renderCreationForm() {
 
+    const { tag } = this.props;
+
     return (
-      <NotesForm onCancel={this.onCreationCancelled} onConfirm={this.onCreationFinished}/>
+      <NotesForm onCancel={this.onCreationCancelled} onConfirm={this.onCreationFinished} tag={tag}/>
     );
   }
 

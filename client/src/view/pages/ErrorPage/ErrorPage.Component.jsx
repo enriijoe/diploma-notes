@@ -8,8 +8,9 @@ import { HeaderBar } from '@View/components/HeaderBar';
 export class ErrorPage extends PureComponent {
 
   render() {
+
     return (
-      <div>
+      <div className={'error-page'}>
 
         <HeaderBar/>
 

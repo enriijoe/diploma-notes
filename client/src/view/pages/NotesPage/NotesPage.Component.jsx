@@ -32,12 +32,14 @@ export class NotesPage extends PureComponent {
 
   renderContent() {
 
+    const { params } = this.props.match;
+
     return (
       <>
 
-        <MenuBar/>
+        <MenuBar tag={params.tag}/>
 
-        <NotesPanel/>
+        <NotesPanel tag={params.tag}/>
 
       </>
     );

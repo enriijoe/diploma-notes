@@ -12,7 +12,6 @@
     align-self: flex-start;
     width: 56px;
     height: 56px;
-    border: white solid 1px;
     border-radius: 32px;
     margin-bottom: 16px;
     font-size: 1.6rem;
@@ -20,7 +19,43 @@
     transition-duration: 500ms;
   }
 
-  .rendered-menu-bar {
-    width: 200px;
+
+  .tags-panel {
+
+    .tags-panel-addition-form {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 8px;
+      background: #dfdfe5;
+      padding: 8px;
+      border-radius: 8px;
+
+      > input {
+        flex-grow: 1;
+        margin-right: 8px;
+        border: none;
+        background: #f1f1f7;
+        padding: 4px;
+      }
+    }
+
+    .tags-panel-tag {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 4px;
+      border-radius: 4px;
+      border: solid 2px black;
+      margin: 4px 0;
+
+      > svg {
+        cursor: pointer;
+      }
+
+      > div {
+        cursor: pointer;
+      }
+    }
   }
 }
